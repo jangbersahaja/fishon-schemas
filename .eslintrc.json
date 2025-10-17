@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "es2021": true,
     "node": true
@@ -7,17 +8,26 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "vitest"],
   "rules": {},
   "overrides": [
     {
-      "files": ["**/__tests__/**/*.ts", "**/*.test.ts"],
-      "env": {
-        "vitest-globals/env": true
+      "files": ["**/__tests__/**/*.{ts,tsx}", "**/*.{test,spec}.{ts,tsx}"],
+      "plugins": ["vitest"],
+      "globals": {
+        "afterAll": "readonly",
+        "afterEach": "readonly",
+        "beforeAll": "readonly",
+        "beforeEach": "readonly",
+        "describe": "readonly",
+        "expect": "readonly",
+        "it": "readonly",
+        "test": "readonly",
+        "vi": "readonly"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["dist/"]
 }
