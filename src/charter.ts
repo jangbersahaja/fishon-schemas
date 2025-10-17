@@ -29,7 +29,7 @@ export const tripSchema = z.object({
     .int({ message: "Whole numbers only" })
     .min(1, { message: "At least 1 angler" }),
   charterStyle: z.enum(["private", "shared"], {
-    invalid_type_error: "Select charter style",
+    error: "Select charter style",
   }),
   description: z.string().optional(),
   species: z.array(z.string()).default([]),

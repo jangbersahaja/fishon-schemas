@@ -3,7 +3,12 @@ import { z } from "zod";
  * Video processing status enum
  * Tracks the lifecycle of a video from queue to ready/failed state
  */
-export declare const ProcessStatusEnum: z.ZodEnum<["queued", "processing", "ready", "failed"]>;
+export declare const ProcessStatusEnum: z.ZodEnum<{
+    queued: "queued";
+    processing: "processing";
+    ready: "ready";
+    failed: "failed";
+}>;
 export type ProcessStatus = z.infer<typeof ProcessStatusEnum>;
 /**
  * Schema for creating a new video upload
@@ -16,14 +21,8 @@ export type ProcessStatus = z.infer<typeof ProcessStatusEnum>;
  */
 export declare const CreateUploadSchema: z.ZodObject<{
     fileName: z.ZodString;
-    fileType: z.ZodEffects<z.ZodString, string, string>;
-}, "strip", z.ZodTypeAny, {
-    fileName?: string;
-    fileType?: string;
-}, {
-    fileName?: string;
-    fileType?: string;
-}>;
+    fileType: z.ZodString;
+}, z.core.$strip>;
 /**
  * Schema for finishing/finalizing a video upload
  * Includes trim metadata and processing details
@@ -38,27 +37,7 @@ export declare const FinishFormSchema: z.ZodObject<{
     ownerId: z.ZodString;
     didFallback: z.ZodOptional<z.ZodBoolean>;
     fallbackReason: z.ZodOptional<z.ZodString>;
-}, "strip", z.ZodTypeAny, {
-    width?: number;
-    height?: number;
-    videoUrl?: string;
-    startSec?: number;
-    endSec?: number;
-    originalDurationSec?: number;
-    ownerId?: string;
-    didFallback?: boolean;
-    fallbackReason?: string;
-}, {
-    width?: number;
-    height?: number;
-    videoUrl?: string;
-    startSec?: number;
-    endSec?: number;
-    originalDurationSec?: number;
-    ownerId?: string;
-    didFallback?: boolean;
-    fallbackReason?: string;
-}>;
+}, z.core.$strip>;
 /**
  * Schema for video transcoding payload sent to worker
  */
@@ -66,25 +45,13 @@ export declare const TranscodePayloadSchema: z.ZodObject<{
     videoUrl: z.ZodString;
     startSec: z.ZodNumber;
     videoId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    videoUrl?: string;
-    startSec?: number;
-    videoId?: string;
-}, {
-    videoUrl?: string;
-    startSec?: number;
-    videoId?: string;
-}>;
+}, z.core.$strip>;
 /**
  * Schema for listing videos by owner
  */
 export declare const ListQuerySchema: z.ZodObject<{
     ownerId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    ownerId?: string;
-}, {
-    ownerId?: string;
-}>;
+}, z.core.$strip>;
 /**
  * Validate thumbnail file constraints
  * @param file - File to validate

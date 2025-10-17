@@ -7,12 +7,4 @@ export declare const DraftPatchSchema: z.ZodObject<{
     dataPartial: z.ZodAny;
     clientVersion: z.ZodNumber;
     currentStep: z.ZodOptional<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    dataPartial?: any;
-    clientVersion?: number;
-    currentStep?: number;
-}, {
-    dataPartial?: any;
-    clientVersion?: number;
-    currentStep?: number;
-}>;
+}, z.core.$strip>;
