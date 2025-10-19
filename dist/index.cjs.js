@@ -194,6 +194,7 @@ var CharterUpdateSchema = import_zod2.z.object({
   captain: import_zod2.z.object({
     displayName: import_zod2.z.string().optional(),
     phone: import_zod2.z.string().optional(),
+    backupPhone: import_zod2.z.string().optional(),
     bio: import_zod2.z.string().optional(),
     experienceYrs: import_zod2.z.number().int().optional()
   }).optional(),
@@ -227,6 +228,7 @@ var CharterUpdateSchema = import_zod2.z.object({
       name: import_zod2.z.string().optional(),
       tripType: import_zod2.z.string().optional(),
       price: import_zod2.z.number().nullable().optional(),
+      promoPrice: import_zod2.z.number().nullable().optional(),
       durationHours: import_zod2.z.number().int().nullable().optional(),
       maxAnglers: import_zod2.z.number().int().nullable().optional(),
       style: import_zod2.z.string().optional(),

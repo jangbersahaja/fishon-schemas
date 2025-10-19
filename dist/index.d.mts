@@ -209,6 +209,7 @@ declare const CharterUpdateSchema: z.ZodObject<{
     captain: z.ZodOptional<z.ZodObject<{
         displayName: z.ZodOptional<z.ZodString>;
         phone: z.ZodOptional<z.ZodString>;
+        backupPhone: z.ZodOptional<z.ZodString>;
         bio: z.ZodOptional<z.ZodString>;
         experienceYrs: z.ZodOptional<z.ZodNumber>;
     }, z.core.$strip>>;
@@ -241,6 +242,7 @@ declare const CharterUpdateSchema: z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         tripType: z.ZodOptional<z.ZodString>;
         price: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+        promoPrice: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         durationHours: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         maxAnglers: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         style: z.ZodOptional<z.ZodString>;

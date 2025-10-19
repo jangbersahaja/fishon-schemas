@@ -143,6 +143,7 @@ var CharterUpdateSchema = z2.object({
   captain: z2.object({
     displayName: z2.string().optional(),
     phone: z2.string().optional(),
+    backupPhone: z2.string().optional(),
     bio: z2.string().optional(),
     experienceYrs: z2.number().int().optional()
   }).optional(),
@@ -176,6 +177,7 @@ var CharterUpdateSchema = z2.object({
       name: z2.string().optional(),
       tripType: z2.string().optional(),
       price: z2.number().nullable().optional(),
+      promoPrice: z2.number().nullable().optional(),
       durationHours: z2.number().int().nullable().optional(),
       maxAnglers: z2.number().int().nullable().optional(),
       style: z2.string().optional(),

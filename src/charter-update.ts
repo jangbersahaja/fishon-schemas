@@ -24,6 +24,7 @@ export const CharterUpdateSchema = z.object({
     .object({
       displayName: z.string().optional(),
       phone: z.string().optional(),
+      backupPhone: z.string().optional(),
       bio: z.string().optional(),
       experienceYrs: z.number().int().optional(),
     })
@@ -65,6 +66,7 @@ export const CharterUpdateSchema = z.object({
         name: z.string().optional(),
         tripType: z.string().optional(),
         price: z.number().nullable().optional(),
+        promoPrice: z.number().nullable().optional(),
         durationHours: z.number().int().nullable().optional(),
         maxAnglers: z.number().int().nullable().optional(),
         style: z.string().optional(),
