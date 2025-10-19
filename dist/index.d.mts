@@ -586,4 +586,35 @@ declare const defaultVideoQueueConfig: VideoQueueConfig;
 declare const isActiveUpload: (i: VideoUploadItem) => i is UploadingUploadItem | ProcessingUploadItem;
 declare const isTerminalUpload: (i: VideoUploadItem) => i is DoneUploadItem | ErrorUploadItem | CanceledUploadItem;
 
-export { type CanceledUploadItem, type CharterFormValues, CharterUpdateSchema, CreateUploadSchema, type DoneUploadItem, DraftPatchSchema, type ErrorDetails, type ErrorUploadItem, FinalizeMediaSchema, FinishFormSchema, IncomingMediaSchema, ListQuerySchema, MediaFileSchema, MediaRemovalSchema, type NormalizedFinalizeMedia, type PendingUploadItem, type ProcessStatus, ProcessStatusEnum, type ProcessingUploadItem, type ProgressDetails, type QueueAnalytics, type QueuePriority, type RetryPolicy, TranscodePayloadSchema, type UploadingUploadItem, type VideoQueueConfig, VideoThumbnailSchema, type VideoUploadItem, type VideoUploadStatus, basicsStepSchema, charterFormSchema, defaultRetryPolicy, defaultVideoQueueConfig, descriptionStepSchema, experienceStepSchema, isActiveUpload, isTerminalUpload, mediaPricingStepSchema, normalizeFinalizeMedia, policiesSchema, tripSchema, tripsStepSchema, validateThumbFile };
+declare const FISHING_TYPES: {
+    value: string;
+    label: string;
+}[];
+declare const TECHNIQUE_OPTIONS: string[];
+declare const AMENITIES_OPTIONS: string[];
+declare const BOAT_FEATURE_OPTIONS: string[];
+declare const BOAT_TYPES: string[];
+declare const TRIP_TYPE_OPTIONS: {
+    value: string;
+    label: string;
+}[];
+
+declare const SPECIES_CATEGORIES: {
+    readonly SALTWATER: "saltwater";
+    readonly FRESHWATER: "freshwater";
+    readonly SQUID: "squid";
+};
+type SpeciesCategory = (typeof SPECIES_CATEGORIES)[keyof typeof SPECIES_CATEGORIES];
+interface SpeciesItem {
+    id: string;
+    english_name: string;
+    local_name: string;
+    image: string;
+    category: SpeciesCategory;
+}
+declare const ALL_SPECIES: SpeciesItem[];
+declare const SPECIES_BY_ID: Record<string, SpeciesItem>;
+declare const SPECIES_BY_CATEGORY: Record<SpeciesCategory, SpeciesItem[]>;
+type SpeciesId = keyof typeof SPECIES_BY_ID;
+
+export { ALL_SPECIES, AMENITIES_OPTIONS, BOAT_FEATURE_OPTIONS, BOAT_TYPES, type CanceledUploadItem, type CharterFormValues, CharterUpdateSchema, CreateUploadSchema, type DoneUploadItem, DraftPatchSchema, type ErrorDetails, type ErrorUploadItem, FISHING_TYPES, FinalizeMediaSchema, FinishFormSchema, IncomingMediaSchema, ListQuerySchema, MediaFileSchema, MediaRemovalSchema, type NormalizedFinalizeMedia, type PendingUploadItem, type ProcessStatus, ProcessStatusEnum, type ProcessingUploadItem, type ProgressDetails, type QueueAnalytics, type QueuePriority, type RetryPolicy, SPECIES_BY_CATEGORY, SPECIES_BY_ID, SPECIES_CATEGORIES, type SpeciesCategory, type SpeciesId, type SpeciesItem, TECHNIQUE_OPTIONS, TRIP_TYPE_OPTIONS, TranscodePayloadSchema, type UploadingUploadItem, type VideoQueueConfig, VideoThumbnailSchema, type VideoUploadItem, type VideoUploadStatus, basicsStepSchema, charterFormSchema, defaultRetryPolicy, defaultVideoQueueConfig, descriptionStepSchema, experienceStepSchema, isActiveUpload, isTerminalUpload, mediaPricingStepSchema, normalizeFinalizeMedia, policiesSchema, tripSchema, tripsStepSchema, validateThumbFile };
