@@ -10,6 +10,7 @@ const fileSchema = z
  * Trip schema - represents a fishing trip offering
  */
 export const tripSchema = z.object({
+  id: z.string().optional(),
   name: z.string().min(1, "Trip name is required"),
   tripType: z.string().min(1, "Select a trip type"),
   price: z.number().min(0, { message: "Price must be zero or more" }),

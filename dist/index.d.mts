@@ -4,6 +4,7 @@ import { z } from 'zod';
  * Trip schema - represents a fishing trip offering
  */
 declare const tripSchema: z.ZodObject<{
+    id: z.ZodOptional<z.ZodString>;
     name: z.ZodString;
     tripType: z.ZodString;
     price: z.ZodNumber;
@@ -86,6 +87,7 @@ declare const charterFormSchema: z.ZodObject<{
         notes: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
     trips: z.ZodArray<z.ZodObject<{
+        id: z.ZodOptional<z.ZodString>;
         name: z.ZodString;
         tripType: z.ZodString;
         price: z.ZodNumber;
@@ -159,6 +161,7 @@ declare const experienceStepSchema: z.ZodObject<{
 }, z.core.$strip>;
 declare const tripsStepSchema: z.ZodObject<{
     trips: z.ZodArray<z.ZodObject<{
+        id: z.ZodOptional<z.ZodString>;
         name: z.ZodString;
         tripType: z.ZodString;
         price: z.ZodNumber;
@@ -204,12 +207,12 @@ declare const CharterUpdateSchema: z.ZodObject<{
         latitude: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         longitude: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         description: z.ZodOptional<z.ZodString>;
+        backupPhone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         tone: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>>;
     captain: z.ZodOptional<z.ZodObject<{
         displayName: z.ZodOptional<z.ZodString>;
         phone: z.ZodOptional<z.ZodString>;
-        backupPhone: z.ZodOptional<z.ZodString>;
         bio: z.ZodOptional<z.ZodString>;
         experienceYrs: z.ZodOptional<z.ZodNumber>;
     }, z.core.$strip>>;

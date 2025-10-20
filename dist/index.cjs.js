@@ -64,6 +64,7 @@ var import_zod = require("zod");
 var isClient = typeof window !== "undefined";
 var fileSchema = import_zod.z.any().refine((file) => !isClient || file instanceof File, "Upload a valid file");
 var tripSchema = import_zod.z.object({
+  id: import_zod.z.string().optional(),
   name: import_zod.z.string().min(1, "Trip name is required"),
   tripType: import_zod.z.string().min(1, "Select a trip type"),
   price: import_zod.z.number().min(0, { message: "Price must be zero or more" }),
@@ -198,13 +199,13 @@ var CharterUpdateSchema = import_zod2.z.object({
     latitude: import_zod2.z.number().nullable().optional(),
     longitude: import_zod2.z.number().nullable().optional(),
     description: import_zod2.z.string().optional(),
+    backupPhone: import_zod2.z.string().nullable().optional(),
     // "tone" is a client-only helper for description generation; accept & ignore.
     tone: import_zod2.z.string().optional()
   }).optional(),
   captain: import_zod2.z.object({
     displayName: import_zod2.z.string().optional(),
     phone: import_zod2.z.string().optional(),
-    backupPhone: import_zod2.z.string().optional(),
     bio: import_zod2.z.string().optional(),
     experienceYrs: import_zod2.z.number().int().optional()
   }).optional(),

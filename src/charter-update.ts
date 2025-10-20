@@ -16,6 +16,7 @@ export const CharterUpdateSchema = z.object({
       latitude: z.number().nullable().optional(),
       longitude: z.number().nullable().optional(),
       description: z.string().optional(),
+      backupPhone: z.string().nullable().optional(),
       // "tone" is a client-only helper for description generation; accept & ignore.
       tone: z.string().optional(),
     })
@@ -24,7 +25,6 @@ export const CharterUpdateSchema = z.object({
     .object({
       displayName: z.string().optional(),
       phone: z.string().optional(),
-      backupPhone: z.string().optional(),
       bio: z.string().optional(),
       experienceYrs: z.number().int().optional(),
     })

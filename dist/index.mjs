@@ -3,6 +3,7 @@ import { z } from "zod";
 var isClient = typeof window !== "undefined";
 var fileSchema = z.any().refine((file) => !isClient || file instanceof File, "Upload a valid file");
 var tripSchema = z.object({
+  id: z.string().optional(),
   name: z.string().min(1, "Trip name is required"),
   tripType: z.string().min(1, "Select a trip type"),
   price: z.number().min(0, { message: "Price must be zero or more" }),
@@ -137,13 +138,13 @@ var CharterUpdateSchema = z2.object({
     latitude: z2.number().nullable().optional(),
     longitude: z2.number().nullable().optional(),
     description: z2.string().optional(),
+    backupPhone: z2.string().nullable().optional(),
     // "tone" is a client-only helper for description generation; accept & ignore.
     tone: z2.string().optional()
   }).optional(),
   captain: z2.object({
     displayName: z2.string().optional(),
     phone: z2.string().optional(),
-    backupPhone: z2.string().optional(),
     bio: z2.string().optional(),
     experienceYrs: z2.number().int().optional()
   }).optional(),
