@@ -228,7 +228,7 @@ var FinalizeMediaSchema = z4.object({
   media: z4.object({
     // Allow zero images to support edit re-use of existing media. Create path still enforces >=1 later.
     images: z4.array(MediaFileSchema).max(20),
-    videos: z4.array(MediaFileSchema).max(5),
+    videos: z4.array(MediaFileSchema).max(10),
     imagesOrder: z4.array(z4.number().int().nonnegative()).optional(),
     videosOrder: z4.array(z4.number().int().nonnegative()).optional(),
     imagesCoverIndex: z4.number().int().nonnegative().nullish(),
@@ -284,7 +284,7 @@ var IncomingMediaSchema = z4.object({
         thumbnailUrl: z4.string().url().optional(),
         durationSeconds: z4.number().int().positive().optional()
       })
-    ).max(5),
+    ).max(10),
     deleteKeys: z4.array(z4.string()).optional()
   }),
   deleteKeys: z4.array(z4.string()).optional(),

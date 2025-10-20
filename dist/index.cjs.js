@@ -289,7 +289,7 @@ var FinalizeMediaSchema = import_zod4.z.object({
   media: import_zod4.z.object({
     // Allow zero images to support edit re-use of existing media. Create path still enforces >=1 later.
     images: import_zod4.z.array(MediaFileSchema).max(20),
-    videos: import_zod4.z.array(MediaFileSchema).max(5),
+    videos: import_zod4.z.array(MediaFileSchema).max(10),
     imagesOrder: import_zod4.z.array(import_zod4.z.number().int().nonnegative()).optional(),
     videosOrder: import_zod4.z.array(import_zod4.z.number().int().nonnegative()).optional(),
     imagesCoverIndex: import_zod4.z.number().int().nonnegative().nullish(),
@@ -345,7 +345,7 @@ var IncomingMediaSchema = import_zod4.z.object({
         thumbnailUrl: import_zod4.z.string().url().optional(),
         durationSeconds: import_zod4.z.number().int().positive().optional()
       })
-    ).max(5),
+    ).max(10),
     deleteKeys: import_zod4.z.array(import_zod4.z.string()).optional()
   }),
   deleteKeys: import_zod4.z.array(import_zod4.z.string()).optional(),

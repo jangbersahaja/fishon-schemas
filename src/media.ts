@@ -45,7 +45,7 @@ export const FinalizeMediaSchema = z.object({
   media: z.object({
     // Allow zero images to support edit re-use of existing media. Create path still enforces >=1 later.
     images: z.array(MediaFileSchema).max(20),
-    videos: z.array(MediaFileSchema).max(5),
+    videos: z.array(MediaFileSchema).max(10),
     imagesOrder: z.array(z.number().int().nonnegative()).optional(),
     videosOrder: z.array(z.number().int().nonnegative()).optional(),
     imagesCoverIndex: z.number().int().nonnegative().nullish(),
@@ -131,7 +131,7 @@ export const IncomingMediaSchema = z.object({
           durationSeconds: z.number().int().positive().optional(),
         })
       )
-      .max(5),
+      .max(10),
     deleteKeys: z.array(z.string()).optional(),
   }),
   deleteKeys: z.array(z.string()).optional(),
