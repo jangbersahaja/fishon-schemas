@@ -7,7 +7,7 @@
  *
  * **Purpose:**
  * Temporary consolidation of all schemas before extraction into a shared package
- * `@fishon/schemas` that can be used across multiple FishOn services.
+ * `@fishon/schemas` that can be used across multiple Fishon services.
  *
  * **Usage:**
  * Import schemas and types from this barrel export:
@@ -52,8 +52,8 @@ export {
   IncomingMediaSchema,
   MediaFileSchema,
   MediaRemovalSchema,
-  normalizeFinalizeMedia,
   VideoThumbnailSchema,
+  normalizeFinalizeMedia,
   type NormalizedFinalizeMedia,
 } from "./media";
 
