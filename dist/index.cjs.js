@@ -141,6 +141,9 @@ var charterFormSchema = import_zod.z.object({
       });
     }
   }),
+  // Charter operational schedule
+  scheduleType: import_zod.z.enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"]).default("EVERYDAY"),
+  operationalDays: import_zod.z.array(import_zod.z.number().min(0).max(6)).optional().default([]),
   trips: import_zod.z.array(tripSchema).min(1, "Add at least one trip"),
   photos: import_zod.z.array(fileSchema).min(3, "Upload at least 3 photos").max(15, "Maximum 15 photos"),
   videos: import_zod.z.array(fileSchema).max(10, "Maximum 10 videos").optional().default([]),
@@ -173,7 +176,9 @@ var experienceStepSchema = charterFormSchema.pick({
   boat: true,
   amenities: true,
   policies: true,
-  pickup: true
+  pickup: true,
+  scheduleType: true,
+  operationalDays: true
 });
 var tripsStepSchema = charterFormSchema.pick({ trips: true });
 var mediaPricingStepSchema = charterFormSchema.pick({

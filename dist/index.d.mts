@@ -86,6 +86,13 @@ declare const charterFormSchema: z.ZodObject<{
         areas: z.ZodArray<z.ZodString>;
         notes: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
+    scheduleType: z.ZodDefault<z.ZodEnum<{
+        EVERYDAY: "EVERYDAY";
+        WEEKDAYS: "WEEKDAYS";
+        WEEKENDS: "WEEKENDS";
+        CUSTOM: "CUSTOM";
+    }>>;
+    operationalDays: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber>>>;
     trips: z.ZodArray<z.ZodObject<{
         id: z.ZodOptional<z.ZodString>;
         name: z.ZodString;
@@ -158,6 +165,13 @@ declare const experienceStepSchema: z.ZodObject<{
         areas: z.ZodArray<z.ZodString>;
         notes: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>;
+    scheduleType: z.ZodDefault<z.ZodEnum<{
+        EVERYDAY: "EVERYDAY";
+        WEEKDAYS: "WEEKDAYS";
+        WEEKENDS: "WEEKENDS";
+        CUSTOM: "CUSTOM";
+    }>>;
+    operationalDays: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodNumber>>>;
 }, z.core.$strip>;
 declare const tripsStepSchema: z.ZodObject<{
     trips: z.ZodArray<z.ZodObject<{

@@ -133,6 +133,14 @@ export const charterFormSchema = z.object({
         });
       }
     }),
+  // Charter operational schedule
+  scheduleType: z
+    .enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"])
+    .default("EVERYDAY"),
+  operationalDays: z
+    .array(z.number().min(0).max(6))
+    .optional()
+    .default([]),
   trips: z.array(tripSchema).min(1, "Add at least one trip"),
   photos: z
     .array(fileSchema)
@@ -184,6 +192,8 @@ export const experienceStepSchema = charterFormSchema.pick({
   amenities: true,
   policies: true,
   pickup: true,
+  scheduleType: true,
+  operationalDays: true,
 });
 
 export const tripsStepSchema = charterFormSchema.pick({ trips: true });
