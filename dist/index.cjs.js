@@ -238,6 +238,10 @@ var CharterUpdateSchema = import_zod2.z.object({
     notes: import_zod2.z.string().optional(),
     areas: import_zod2.z.array(import_zod2.z.string()).optional()
   }).optional(),
+  schedule: import_zod2.z.object({
+    scheduleType: import_zod2.z.enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"]).optional(),
+    operationalDays: import_zod2.z.array(import_zod2.z.number().min(0).max(6)).optional()
+  }).optional(),
   trips: import_zod2.z.array(
     import_zod2.z.object({
       id: import_zod2.z.string().nullable().optional(),

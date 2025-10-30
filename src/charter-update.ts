@@ -59,6 +59,14 @@ export const CharterUpdateSchema = z.object({
       areas: z.array(z.string()).optional(),
     })
     .optional(),
+  schedule: z
+    .object({
+      scheduleType: z
+        .enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"])
+        .optional(),
+      operationalDays: z.array(z.number().min(0).max(6)).optional(),
+    })
+    .optional(),
   trips: z
     .array(
       z.object({

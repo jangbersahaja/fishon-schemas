@@ -254,6 +254,15 @@ declare const CharterUpdateSchema: z.ZodObject<{
         notes: z.ZodOptional<z.ZodString>;
         areas: z.ZodOptional<z.ZodArray<z.ZodString>>;
     }, z.core.$strip>>;
+    schedule: z.ZodOptional<z.ZodObject<{
+        scheduleType: z.ZodOptional<z.ZodEnum<{
+            EVERYDAY: "EVERYDAY";
+            WEEKDAYS: "WEEKDAYS";
+            WEEKENDS: "WEEKENDS";
+            CUSTOM: "CUSTOM";
+        }>>;
+        operationalDays: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
+    }, z.core.$strip>>;
     trips: z.ZodOptional<z.ZodArray<z.ZodObject<{
         id: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         name: z.ZodOptional<z.ZodString>;

@@ -137,10 +137,7 @@ export const charterFormSchema = z.object({
   scheduleType: z
     .enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"])
     .default("EVERYDAY"),
-  operationalDays: z
-    .array(z.number().min(0).max(6))
-    .optional()
-    .default([]),
+  operationalDays: z.array(z.number().min(0).max(6)).optional().default([]),
   trips: z.array(tripSchema).min(1, "Add at least one trip"),
   photos: z
     .array(fileSchema)

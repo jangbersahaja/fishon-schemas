@@ -177,6 +177,10 @@ var CharterUpdateSchema = z2.object({
     notes: z2.string().optional(),
     areas: z2.array(z2.string()).optional()
   }).optional(),
+  schedule: z2.object({
+    scheduleType: z2.enum(["EVERYDAY", "WEEKDAYS", "WEEKENDS", "CUSTOM"]).optional(),
+    operationalDays: z2.array(z2.number().min(0).max(6)).optional()
+  }).optional(),
   trips: z2.array(
     z2.object({
       id: z2.string().nullable().optional(),
