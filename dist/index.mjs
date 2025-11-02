@@ -345,6 +345,8 @@ var FinishFormSchema = z5.object({
   height: z5.number().min(0).max(1e4).optional(),
   originalDurationSec: z5.number().min(0).max(86400).optional(),
   ownerId: z5.string().min(1),
+  blobKey: z5.string().min(1),
+  charterId: z5.string().min(1).optional(),
   didFallback: z5.boolean().optional(),
   fallbackReason: z5.string().max(300).optional()
 });

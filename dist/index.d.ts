@@ -444,6 +444,8 @@ declare const FinishFormSchema: z.ZodObject<{
     height: z.ZodOptional<z.ZodNumber>;
     originalDurationSec: z.ZodOptional<z.ZodNumber>;
     ownerId: z.ZodString;
+    blobKey: z.ZodString;
+    charterId: z.ZodOptional<z.ZodString>;
     didFallback: z.ZodOptional<z.ZodBoolean>;
     fallbackReason: z.ZodOptional<z.ZodString>;
 }, z.core.$strip>;
@@ -491,6 +493,7 @@ interface BaseVideoUploadItem {
     progress: number;
     priority: QueuePriority;
     queuePosition?: number;
+    charterId?: string | null;
     trim?: {
         startSec: number;
         endSec: number;

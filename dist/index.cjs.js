@@ -406,6 +406,8 @@ var FinishFormSchema = import_zod5.z.object({
   height: import_zod5.z.number().min(0).max(1e4).optional(),
   originalDurationSec: import_zod5.z.number().min(0).max(86400).optional(),
   ownerId: import_zod5.z.string().min(1),
+  blobKey: import_zod5.z.string().min(1),
+  charterId: import_zod5.z.string().min(1).optional(),
   didFallback: import_zod5.z.boolean().optional(),
   fallbackReason: import_zod5.z.string().max(300).optional()
 });

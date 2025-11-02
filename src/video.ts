@@ -16,7 +16,7 @@ export type ProcessStatus = z.infer<typeof ProcessStatusEnum>;
 /**
  * Schema for creating a new video upload
  * Used when initiating a video upload flow
- * 
+ *
  * Note: Mobile devices may not set proper MIME types, so we accept:
  * - video/* MIME types
  * - Empty strings (will validate by file extension)
@@ -52,6 +52,8 @@ export const FinishFormSchema = z.object({
   height: z.number().min(0).max(10000).optional(),
   originalDurationSec: z.number().min(0).max(86400).optional(),
   ownerId: z.string().min(1),
+  blobKey: z.string().min(1),
+  charterId: z.string().min(1).optional(),
   didFallback: z.boolean().optional(),
   fallbackReason: z.string().max(300).optional(),
 });
@@ -90,17 +92,30 @@ export function validateThumbFile(file: File) {
  */
 const SUPPORTED_VIDEO_EXTENSIONS = [
   // Modern web formats
-  "mp4", "webm", "ogg",
+  "mp4",
+  "webm",
+  "ogg",
   // Apple formats
-  "mov", "m4v", "m4p",
+  "mov",
+  "m4v",
+  "m4p",
   // Mobile formats (Android)
-  "3gp", "3gpp",
+  "3gp",
+  "3gpp",
   // Legacy/Desktop formats
-  "avi", "mkv", "flv", "wmv",
+  "avi",
+  "mkv",
+  "flv",
+  "wmv",
   // MPEG variants
-  "mpg", "mpeg", "mpe", "mpv", "m2v",
+  "mpg",
+  "mpeg",
+  "mpe",
+  "mpv",
+  "m2v",
   // Transport streams
-  "m2ts", "mts"
+  "m2ts",
+  "mts",
 ];
 
 /**
@@ -115,21 +130,21 @@ const VIDEO_EXTENSION_REGEX = new RegExp(
 /**
  * Validate video file type
  * Mobile-friendly validation that checks both MIME type and file extension
- * 
+ *
  * @param file - File to validate
  * @returns true if valid video file, false otherwise
- * 
+ *
  * @remarks
  * Mobile devices (especially iOS) may not set proper MIME types or may use:
  * - Empty string
  * - "application/octet-stream"
  * - Incorrect MIME types (e.g., "audio/mpeg" for .mp4 files)
  * - Unexpected video MIME types like "video/quicktime" for .mov files
- * 
+ *
  * Strategy:
  * 1. If MIME type is video/*, accept immediately (most reliable case)
  * 2. Always check file extension as fallback (handles empty/wrong/generic MIME types)
- * 
+ *
  * This intentionally allows files with wrong MIME types if they have valid video extensions,
  * as mobile browsers frequently misreport MIME types.
  */
@@ -138,7 +153,7 @@ export function isValidVideoFile(file: File): boolean {
   if (file.type && file.type.startsWith("video/")) {
     return true;
   }
-  
+
   // Fallback: Check file extension for common video formats
   // This handles: empty MIME, application/octet-stream, wrong MIME types
   return VIDEO_EXTENSION_REGEX.test(file.name);

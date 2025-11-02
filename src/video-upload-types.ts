@@ -32,6 +32,7 @@ interface BaseVideoUploadItem {
   progress: number; // 0..1 user-facing progress (upload portion only for now)
   priority: QueuePriority;
   queuePosition?: number;
+  charterId?: string | null; // Optional charter ID to link video during upload
   // Placeholder for future trimming / fallback metadata (populated pre-upload in later phases)
   trim?: {
     startSec: number;
