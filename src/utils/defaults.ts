@@ -7,7 +7,7 @@ export const FISHING_TYPES = [
 ];
 
 export const TECHNIQUE_OPTIONS = [
-  "Bottom",
+  "Bottom Fishing",
   "Casting",
   "Deep Sea Fishing",
   "Drift Fishing",

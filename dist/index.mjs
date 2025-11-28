@@ -451,7 +451,7 @@ var FISHING_TYPES = [
   { value: "jungle", label: "Jungle / Waterfall" }
 ];
 var TECHNIQUE_OPTIONS = [
-  "Bottom",
+  "Bottom Fishing",
   "Casting",
   "Deep Sea Fishing",
   "Drift Fishing",
