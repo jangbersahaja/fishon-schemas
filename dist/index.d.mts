@@ -56,6 +56,7 @@ declare const charterFormSchema: z.ZodObject<{
     latitude: z.ZodNumber;
     longitude: z.ZodNumber;
     description: z.ZodString;
+    descriptionMy: z.ZodOptional<z.ZodString>;
     generatedDescription: z.ZodOptional<z.ZodString>;
     tone: z.ZodDefault<z.ZodEnum<{
         friendly: "friendly";
@@ -198,6 +199,7 @@ declare const mediaPricingStepSchema: z.ZodObject<{
 }, z.core.$strip>;
 declare const descriptionStepSchema: z.ZodObject<{
     description: z.ZodString;
+    descriptionMy: z.ZodOptional<z.ZodString>;
     generatedDescription: z.ZodOptional<z.ZodString>;
     tone: z.ZodDefault<z.ZodEnum<{
         friendly: "friendly";

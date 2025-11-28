@@ -95,6 +95,11 @@ export const charterFormSchema = z.object({
   description: z
     .string()
     .min(40, "Description should be at least 40 characters"),
+  // Malay version of description for locale support
+  descriptionMy: z
+    .string()
+    .min(40, "Deskripsi hendaklah sekurang-kurangnya 40 aksara")
+    .optional(),
   // Internal: last generated description baseline for personalization diff.
   generatedDescription: z.string().optional(),
   // Tone selection for generator.
@@ -203,6 +208,7 @@ export const mediaPricingStepSchema = charterFormSchema.pick({
 // New dedicated description step schema (moved out of media step)
 export const descriptionStepSchema = charterFormSchema.pick({
   description: true,
+  descriptionMy: true,
   generatedDescription: true,
   tone: true,
 });

@@ -112,6 +112,8 @@ var charterFormSchema = import_zod.z.object({
   longitude: import_zod.z.number().min(-180, { message: "Longitude must be between -180 and 180" }).max(180, { message: "Longitude must be between -180 and 180" }),
   // User editable final description (can start from auto-generated). Increase minimum length.
   description: import_zod.z.string().min(40, "Description should be at least 40 characters"),
+  // Malay version of description for locale support
+  descriptionMy: import_zod.z.string().min(40, "Deskripsi hendaklah sekurang-kurangnya 40 aksara").optional(),
   // Internal: last generated description baseline for personalization diff.
   generatedDescription: import_zod.z.string().optional(),
   // Tone selection for generator.
@@ -187,6 +189,7 @@ var mediaPricingStepSchema = charterFormSchema.pick({
 });
 var descriptionStepSchema = charterFormSchema.pick({
   description: true,
+  descriptionMy: true,
   generatedDescription: true,
   tone: true
 });
