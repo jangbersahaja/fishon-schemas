@@ -207,6 +207,8 @@ var CharterUpdateSchema = import_zod2.z.object({
     latitude: import_zod2.z.number().nullable().optional(),
     longitude: import_zod2.z.number().nullable().optional(),
     description: import_zod2.z.string().optional(),
+    descriptionMy: import_zod2.z.string().nullable().optional(),
+    // Malay description
     backupPhone: import_zod2.z.string().nullable().optional(),
     // "tone" is a client-only helper for description generation; accept & ignore.
     tone: import_zod2.z.string().optional()

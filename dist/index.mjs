@@ -146,6 +146,8 @@ var CharterUpdateSchema = z2.object({
     latitude: z2.number().nullable().optional(),
     longitude: z2.number().nullable().optional(),
     description: z2.string().optional(),
+    descriptionMy: z2.string().nullable().optional(),
+    // Malay description
     backupPhone: z2.string().nullable().optional(),
     // "tone" is a client-only helper for description generation; accept & ignore.
     tone: z2.string().optional()

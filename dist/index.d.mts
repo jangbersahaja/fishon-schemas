@@ -223,6 +223,7 @@ declare const CharterUpdateSchema: z.ZodObject<{
         latitude: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         longitude: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
         description: z.ZodOptional<z.ZodString>;
+        descriptionMy: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         backupPhone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         tone: z.ZodOptional<z.ZodString>;
     }, z.core.$strip>>;
